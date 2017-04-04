@@ -28,7 +28,7 @@ using namespace std ;
 
 int main(int argc, char **argv)
 {	const int NC = 18 ;
-	string n1 , n2 ;
+	string a , b ;
 	//TO DO :  leggere da input e controllare i caratteri
 	/*TO DO :  normalizzare a NC cifre 
 	 *         ossia aggiungere zeri non significati sino a NC cifre
@@ -39,37 +39,37 @@ int main(int argc, char **argv)
 	// pre semplicità li "normalizzo a NC cifre"
 	
 	// "123456789012345678"   // righello ...
-	n1="0??32???2??3?5???1";
-	n2="0??31???2??3?5???1";
+	a="0??31???2??3?5???1";
+	b="0???1?7?2??3?5???1";
 
 
-	cout << n1 << endl;
-	cout << n2 << endl<< endl;
+	cout << a << endl;
+	cout << b << endl<< endl;
 
 			
 	int i = 0; 
 	while (i<NC)
 	{	
 		
-		if  ( ( n1[i] == '?') and  ( n2[i] == '?') )
+		if  ( ( a[i] == '?') and  ( b[i] == '?') )
 			{  
-				n1[i] = n2[i] = '0';
+				a[i] = b[i] = '0';
 				i++ ; continue ;
 			} 	
 			
-		if  ( ( n1[i] == '?') and  ( n2[i] != '?') )
+		if  ( ( a[i] == '?') and  ( b[i] != '?') )
 			{  
-				n1[i] = n2[i] ;
+				a[i] = b[i] ;
 				i++ ; continue ;
 			}
 		
-		if  ( ( n1[i] != '?') and  ( n2[i] == '?') )
+		if  ( ( a[i] != '?') and  ( b[i] == '?') )
 			{  
-				n2[i] = n1[i] ;
+				b[i] = a[i] ;
 				i++ ; continue ;
 			}
 
-		if  ( ( n1[i] == n2[i] ) )
+		if  ( ( a[i] == b[i] ) )
 			{  
 				i++ ; continue ;
 			}
@@ -78,8 +78,8 @@ int main(int argc, char **argv)
 	}
 	
 	if (i == NC )  // i numeri sono [stati resi] uguali 
-	{		cout << n1 << endl;
-			cout << n2 << endl;
+	{		cout << a << endl;
+			cout << b << endl;
 			cout << "distanza " << 0;
 			return 0; 
 	}
@@ -88,30 +88,30 @@ int main(int argc, char **argv)
 	 è più grande del massimo dell'altro variando i ?.
 	*/
 	
-	if ( n1[i] > n2[i] )      			// grazie al codice ascii !!!
-	{	// n1 è sicuramente più grande ...
-		// minimizzo n1  e massimizzo n2	
+	if ( a[i] > b[i] )      			// grazie al codice ascii !!!
+	{	// a è sicuramente più grande ...
+		// minimizzo a  e massimizzo b	
 	
 		while ( i < NC )
-		{ 	if (  n1[i] == '?' )  n1[i] = '0' ;
-			if (  n2[i] == '?' )  n2[i] = '9' ;
+		{ 	if (  a[i] == '?' )  a[i] = '0' ;
+			if (  b[i] == '?' )  b[i] = '9' ;
 			i++;
 		}
 	}
 	else
-	{	// n2 è sicuramente più grande ...
-		// minimizzo n2  e massimizzo n1	
+	{	// b è sicuramente più grande ...
+		// minimizzo b  e massimizzo a	
 	
 		while ( i < NC )
-		{ 	if (  n2[i] == '?' )  n2[i] = '0' ;
-			if (  n1[i] == '?' )  n1[i] = '9' ;
+		{ 	if (  b[i] == '?' )  b[i] = '0' ;
+			if (  a[i] == '?' )  a[i] = '9' ;
 			i++;
 		}
 	}
 		
 			 
-	cout << n1 << endl;
-	cout << n2 << endl;
+	cout << a << endl;
+	cout << b << endl;
 	cout << "distanza non so calcolarla ancora " ;
 	return 0;
 
